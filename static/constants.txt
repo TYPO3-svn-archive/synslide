@@ -1,0 +1,8 @@
+plugin.synslide {
+  # cat=synslide/other/0010; type=Options[Normal=,Flash=Flash,Fold=Fold,Push=Push,KenBurns=KenBurns]; label=Image transition:Define image transition effect
+  effectClass = 
+  # cat=synslide/other/0020; type=int; label=Slide show time:Time a slide is shown
+  slideShowTime = 4000
+  # cat=synslide/other/0030; type=boolean; label=Ignore t3mootools: If checked mootools will be added to the page header even though t3mootools is installed
+  ignoreT3mootools = 0
+}

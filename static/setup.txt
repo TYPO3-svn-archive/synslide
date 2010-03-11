@@ -1,0 +1,70 @@
+includeLibs.tx_synslide = EXT:synslide/lib/class.tx_synslide_comp.php
+
+tt_content.image.20.imageStdWrap {
+	dataWrap >
+  setContentToCurrent = 1
+  setCurrent{
+    current = 1
+    dataWrap = <div class="csc-textpic-imagewrap" style="width:{register:totalwidth}px;"> | </div>
+  }
+  current = 1  
+  override {
+    if.isTrue.field = tx_synslide_enabled
+    dataWrap = <div class="csc-textpic-imagewrap" style="width:{field:imagewidth}px; height:{register:synslide_height}px;"> | </div>
+		postCObject = USER
+		postCObject.userFunc = tx_synslide_comp->render
+		postCObject {
+      component {
+        general {
+          jsFileToolsSlide.data = path:EXT:synslide/res/js/toolsslideexcomp.js
+          jsFileSlideshow.data = path:EXT:synslide/res/js/slideshowexcomp.js
+          ignoreT3mootools = {$plugin.synslide.ignoreT3mootools}
+          name.dataWrap = show{field:uid}
+          isGlobal = 0
+          width.field = imagewidth
+          height.field = imageheight
+          showController = 1
+          showThumbnails = 1
+          showCaptions = 1
+          showLoader = 1
+          delay = {$plugin.synslide.slideShowTime}
+          effectClass = {$plugin.synslide.effectClass}
+        }
+        
+        image {
+          path < tt_content.image.20.imgPath
+          list < tt_content.image.20.imgList
+          caption.field = imagecaption
+          link.field = image_link
+          compression < tt_content.image.20.image_compression
+          effects < tt_content.image.20.image_effects
+        }
+        
+        mainPanel {
+          useEffects = 1
+          useCompression = 1
+          scaleFactor = 1.2
+          file {
+            import.data = register:synslide_image_file
+            width.data = register:synslide_image_width
+            width.wrap = |c
+            height.data = register:synslide_image_height
+          }
+          typolink {
+            parameter.data = register:synslide_image_link
+          }
+        }
+        
+        thumbPanel {
+          height = 65
+          useEffects = 1
+          useCompression = 0
+          file {
+            import.data = register:synslide_image_file
+            height = 55
+          }
+        }
+      }
+    }
+	}		
+}
