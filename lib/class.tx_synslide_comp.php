@@ -126,6 +126,7 @@ class tx_synslide_comp {
     $aJsImageData = array();
     foreach($aShowImage as $k => $aImageInfo){
       $caption = str_replace(array('<br />',chr(10),chr(13)),'',$aCaption[$k]);
+      $caption = str_replace(array("'",'"'),array("\'",'\"'),$aCaption[$k]); /* fix quotes - S.Delcroix (sdelcroix@rvvn.org) */
       $caption = $caption ? sprintf(', caption: \'%s\'',$caption) : '';
       $aJsImageData[] = sprintf(
         '\'%s\': { thumbnail: \'%s\' %s %s }',
@@ -141,6 +142,9 @@ class tx_synslide_comp {
   	      %s
   	    };
         %smy%s = new Slideshow%s(\'%s\', data, {width: %d, height: %d, hu: \'%s\', controller: %s, thumbnails: %s, captions: %s, loader: %s, delay: %d});
+        $$(\'a\').addEvent(\'click\',function(){
+          this.pause();
+        }.bind(my%s));
   	  });
       ',
   	  implode(',' . chr(10),$aJsImageData),
@@ -155,7 +159,8 @@ class tx_synslide_comp {
   	  $compConf['general']['showThumbnails'] ? 'true' : 'false',
   	  $compConf['general']['showCaptions'] ? 'true' : 'false',
   	  $compConf['general']['showLoader'] ? 'true' : 'false',
-  	  $compConf['general']['delay']
+  	  $compConf['general']['delay'],
+      $compConf['general']['name']
     );
     if(t3lib_extMgm::isLoaded('t3mootools') && !$compConf['general']['ignoreT3mootools']){
       require_once(t3lib_extMgm::extPath('t3mootools').'class.tx_t3mootools.php');

@@ -1,4 +1,1 @@
-> fold script breaks in ie8
-> click enlarge or lightbox functionality
-> stop show on link click
 > create tx_synslide ts-setup
