@@ -142,9 +142,11 @@ class tx_synslide_comp {
   	      %s
   	    };
         %smy%s = new Slideshow%s(\'%s\', data, {width: %d, height: %d, hu: \'%s\', controller: %s, thumbnails: %s, captions: %s, loader: %s, delay: %d});
-        $$(\'a\').addEvent(\'click\',function(){
+        var pauseShowOnLinkKlick = function(){
           this.pause();
-        }.bind(my%s));
+        }.bind(my%s);
+        $$(\'a\').addEvent(\'click\',pauseShowOnLinkKlick);
+        $(\'%s\').getElements(\'a\').removeEvent(\'click\',pauseShowOnLinkKlick);
   	  });
       ',
   	  implode(',' . chr(10),$aJsImageData),
@@ -160,6 +162,7 @@ class tx_synslide_comp {
   	  $compConf['general']['showCaptions'] ? 'true' : 'false',
   	  $compConf['general']['showLoader'] ? 'true' : 'false',
   	  $compConf['general']['delay'],
+      $compConf['general']['name'],
       $compConf['general']['name']
     );
     if(t3lib_extMgm::isLoaded('t3mootools') && !$compConf['general']['ignoreT3mootools']){
