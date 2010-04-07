@@ -143,7 +143,7 @@ class tx_synslide_comp {
   	    };
         %smy%s = new Slideshow%s(\'%s\', data, {width: %d, height: %d, hu: \'%s\', controller: %s, thumbnails: %s, captions: %s, loader: %s, delay: %d});
         var pauseShowOnLinkKlick = function(){
-          this.pause();
+          this.pause(1);
         }.bind(my%s);
         $$(\'a\').addEvent(\'click\',pauseShowOnLinkKlick);
         $(\'%s\').getElements(\'a\').removeEvent(\'click\',pauseShowOnLinkKlick);
