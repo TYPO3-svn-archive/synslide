@@ -24,8 +24,8 @@ tt_content.image.20.imageStdWrap {
           width.field = imagewidth
           height.field = imageheight
           showController = 1
-          showThumbnails = 1
-          showCaptions = 1
+          showThumbnails = {$plugin.synslide.showThumbnails}
+          showCaptions = {$plugin.synslide.showCaptions}
           showLoader = 1
           delay = {$plugin.synslide.slideShowTime}
           effectClass = {$plugin.synslide.effectClass}
@@ -43,7 +43,7 @@ tt_content.image.20.imageStdWrap {
         mainPanel {
           useEffects = 1
           useCompression = 1
-          scaleFactor = 1.2
+          scaleFactor = {$plugin.synslide.scaleFactor}
           file {
             import.data = register:synslide_image_file
             width.data = register:synslide_image_width

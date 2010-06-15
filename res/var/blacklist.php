@@ -2,7 +2,7 @@
 /***************************************************************
 *  Copyright notice
 *
-*  (c) 2010 Roman Buechler <rb@synac.com>
+*  (c) 2010 Synac Technology, S.L., Roman Buechler <rb@synac.com>
 *  All rights reserved
 *
 *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -26,6 +26,6 @@ if (!defined ('TYPO3_MODE')) {
 	die ('Access denied.');
 };
 
-$aBlacklist = array('schoenland','epatec');
+$aBlacklist = array('schoenland','sbc','epatec');
 
 ?>

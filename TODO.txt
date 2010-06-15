@@ -1,1 +1,2 @@
 > create tx_synslide ts-setup
+> add Synac Technology, S.L.

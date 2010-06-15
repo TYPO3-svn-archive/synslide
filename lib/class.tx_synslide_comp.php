@@ -2,7 +2,7 @@
 /***************************************************************
 *  Copyright notice
 *
-*  (c) 2010 Roman Buechler <rb@synac.com>
+*  (c) 2010 Synac Technology, S.L., Roman Buechler <rb@synac.com>
 *  All rights reserved
 *
 *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -31,7 +31,7 @@
 /**
  * Synslide component for the 'synslide' extension.
  *
- * @author	Roman Buechler <rb@synac.com>
+ * @author	Synac Technology, S.L., Roman Buechler <rb@synac.com>
  * @package	TYPO3
  * @subpackage	synslide
  */
@@ -186,8 +186,8 @@ class tx_synslide_comp {
       </div>',
       $compConf['general']['name'],
       $compConf['general']['width'],
-      $showImage[0][3],
-      ''
+      isset($aShowImage[0][3]) ? $aShowImage[0][3] : '',
+      isset($aCaption[0]) ? $aCaption[0] : ''
     );
     if(isset($conf['component.']['stdWrap.'])) $content = $this->cObj->stdWrap($content,$conf['component.']['stdWrap.']);
     
